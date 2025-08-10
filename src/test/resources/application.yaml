@@ -4,10 +4,12 @@ server:
     context-path: /api
 
 spring:
+  config:
+    import: optional:file:.env[.properties]
   jpa:
     hibernate:
       ddl-auto: validate
 
 jwt:
-  expiration: 450000
-  secret: test23213tSecretKeye2verrrrrrrrrrrrr4533431s
+  expiration: ${JWT_EXPIRATION}
+  secret: ${JWT_SECRET}
