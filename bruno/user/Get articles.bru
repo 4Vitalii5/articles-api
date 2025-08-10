@@ -1,0 +1,20 @@
+meta {
+  name: Get articles
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{BASE_URL}}/api/articles?page=0&size=2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 0
+  size: 2
+}
+
+headers {
+  Authorization: {{BEARER_TOKEN}}
+}
