@@ -1,0 +1,11 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Max speed",
+            "author": "Jorge Orwell",
+            "content": "It is amazing",
+            "publish_date": "2025-08-09 19:30:00"
+        }
+    ]
+}

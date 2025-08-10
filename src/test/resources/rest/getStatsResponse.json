@@ -1,0 +1,14 @@
+[
+  {
+    "author": "Author A",
+    "articleCount": 3
+  },
+  {
+    "author": "Author B",
+    "articleCount": 2
+  },
+  {
+    "author": "Author C",
+    "articleCount": 1
+  }
+]

@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+  name: articles
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: "postgres"
+    password: "postgres"
+    url: "jdbc:postgresql://localhost:5433/articles"
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  expiration: 450000
+  secret: Perfec213tSecretKeye2verrrrrrrrrrrrr4533431s
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG

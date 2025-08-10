@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@ukr.net",
+      "password": "$2a$10$sjfgJHtM/l6IFR0Yv3lxEOtFT62X5msR7/ZFPb.xXOI5mOtMMACNG",
+      "first_name": "Vitalii",
+      "last_name": "Stepanuk"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "role": "ROLE_USER"
+    }
+  ],
+  "users_roles": [
+    {
+      "user_id": 1,
+      "role_id": 1
+    }
+  ]
+}

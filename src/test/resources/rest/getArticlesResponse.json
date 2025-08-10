@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "First title",
+    "author": "First author",
+    "content": "first content",
+    "publishDate": "2025-08-09T19:30:00Z"
+  },
+  {
+    "id": 2,
+    "title": "Second title",
+    "author": "Second author",
+    "content": "Second content",
+    "publishDate": "2025-08-09T19:30:00Z"
+  },
+  {
+    "id": 3,
+    "title": "Third title",
+    "author": "Third author",
+    "content": "Third content",
+    "publishDate": "2025-08-09T19:30:00Z"
+  }
+]

@@ -1,0 +1,96 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "user@ukr.net",
+      "password": "password",
+      "first_name": "User",
+      "last_name": "One"
+    },
+    {
+      "id": 2,
+      "email": "admin@gmail.com",
+      "password": "password",
+      "first_name": "Admin",
+      "last_name": "User"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "role": "ROLE_USER"
+    },
+    {
+      "id": 2,
+      "role": "ROLE_ADMIN"
+    }
+  ],
+  "users_roles": [
+    {
+      "user_id": 1,
+      "role_id": 1
+    },
+    {
+      "user_id": 2,
+      "role_id": 2
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "T1",
+      "author": "Author A",
+      "content": "c",
+      "publish_date": "2025-08-01 10:00:00",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "title": "T2",
+      "author": "Author B",
+      "content": "c",
+      "publish_date": "2025-07-30 10:00:00",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "title": "T3",
+      "author": "Author A",
+      "content": "c",
+      "publish_date": "2025-07-28 10:00:00",
+      "user_id": 1
+    },
+    {
+      "id": 4,
+      "title": "T4",
+      "author": "Author C",
+      "content": "c",
+      "publish_date": "2025-07-25 10:00:00",
+      "user_id": 2
+    },
+    {
+      "id": 5,
+      "title": "T5",
+      "author": "Author B",
+      "content": "c",
+      "publish_date": "2025-07-20 10:00:00",
+      "user_id": 2
+    },
+    {
+      "id": 6,
+      "title": "T6",
+      "author": "Author A",
+      "content": "c",
+      "publish_date": "2025-07-15 10:00:00",
+      "user_id": 1
+    },
+    {
+      "id": 7,
+      "title": "Old",
+      "author": "Author A",
+      "content": "c",
+      "publish_date": "2025-01-01 10:00:00",
+      "user_id": 1
+    }
+  ]
+}

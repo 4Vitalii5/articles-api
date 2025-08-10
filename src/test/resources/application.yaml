@@ -1,0 +1,13 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+jwt:
+  expiration: 450000
+  secret: test23213tSecretKeye2verrrrrrrrrrrrr4533431s
