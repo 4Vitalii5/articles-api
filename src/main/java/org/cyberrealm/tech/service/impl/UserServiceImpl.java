@@ -30,16 +30,21 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto register(UserRegistrationRequestDto requestDto)
             throws RegistrationException {
         User user = userMapper.toModel(requestDto);
+
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new RegistrationException("User with email: "
                     + user.getEmail() + " already exists");
         }
+
         Role role = roleRepository.findByRole(DEFAULT_ROLE).orElseThrow(() ->
                 new EntityNotFoundException("Role: " + DEFAULT_ROLE + " not found")
         );
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Set.of(role));
+
         userRepository.save(user);
+
         return userMapper.toUserResponse(user);
     }
 

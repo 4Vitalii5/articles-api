@@ -9,9 +9,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ArticleMapper {
-
     ArticleDto toDto(Article article);
 
+    @Mapping(target = "id", ignore = true)
     @Mapping(target = "user", expression = "java(context.getUser())")
     Article toEntity(CreateArticleRequestDto requestDto, UserContext context);
 }

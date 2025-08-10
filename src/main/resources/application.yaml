@@ -12,7 +12,6 @@ spring:
     password: "postgres"
     url: "jdbc:postgresql://localhost:5433/articles"
   jpa:
-    open-in-view: false
     hibernate:
       ddl-auto: validate
     properties:
@@ -22,9 +21,3 @@ spring:
 jwt:
   expiration: 450000
   secret: Perfec213tSecretKeye2verrrrrrrrrrrrr4533431s
-
-logging:
-  level:
-    org:
-      springframework:
-        web: DEBUG

@@ -1,7 +1,6 @@
 package org.cyberrealm.tech.service.impl;
 
-import java.time.Duration;
-import java.time.Instant;
+import java.time.ZonedDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.cyberrealm.tech.dto.article.ArticleDto;
@@ -21,6 +20,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ArticleServiceImpl implements ArticleService {
+    private static final int STATS_DAYS = 50;
+    private static final int PAGE_SIZE = 3;
+    private static final int PAGE_NUMBER = 0;
+
     private final ArticleRepository repository;
     private final ArticleMapper mapper;
     private final UserContext context;
@@ -50,8 +53,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<AuthorStatsDto> getTopAuthors() {
-        Instant startDate = Instant.now().minus(Duration.ofDays(50));
-        Pageable topThree = PageRequest.of(0, 3);
-        return repository.findTopAuthors(startDate, topThree);
+        ZonedDateTime sinceDate = ZonedDateTime.now().minusDays(STATS_DAYS);
+        Pageable topThree = PageRequest.of(PAGE_NUMBER, PAGE_SIZE);
+        return repository.findTopAuthors(sinceDate, topThree);
     }
 }

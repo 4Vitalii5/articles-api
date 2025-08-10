@@ -3,6 +3,7 @@ package org.cyberrealm.tech.controller;
 import static io.restassured.RestAssured.given;
 import static org.cyberrealm.tech.controller.ArticleControllerFeatureTest.TestResources.BASE_DATASETS_PATH;
 import static org.cyberrealm.tech.controller.ArticleControllerFeatureTest.TestResources.BASE_RESOURCE_PATH;
+import static org.cyberrealm.tech.controller.ArticleControllerFeatureTest.TestResources.DEFAULT_USERNAME;
 import static org.cyberrealm.tech.controller.ArticleControllerFeatureTest.TestResources.buildCreateArticleRqJson;
 import static org.cyberrealm.tech.controller.ArticleControllerFeatureTest.TestResources.buildInvalidCreateArticleRqJson;
 
@@ -49,12 +50,12 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
     void givenCreateArticleRequest_whenCreateArticle_shouldCreateArticle() {
         String response = given()
                 .body(buildCreateArticleRqJson())
-                .header(tokenUtils.buildAuth("user@ukr.net"))
+                .header(tokenUtils.buildAuth(DEFAULT_USERNAME))
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/articles")
                 .then()
-                .statusCode(HttpStatus.OK.value())
+                .statusCode(HttpStatus.CREATED.value())
                 .extract()
                 .body()
                 .asString();
@@ -72,7 +73,7 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
     void givenInvalidRequest_whenCreateArticle_shouldReturnBadRequest() {
         given()
                 .body(buildInvalidCreateArticleRqJson())
-                .header(tokenUtils.buildAuth("user@ukr.net"))
+                .header(tokenUtils.buildAuth(DEFAULT_USERNAME))
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/articles")
@@ -86,7 +87,7 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
     void givenDuplicateArticle_whenCreateArticle_shouldReturnConflict() {
         given()
                 .body(buildCreateArticleRqJson())
-                .header(tokenUtils.buildAuth("user@ukr.net"))
+                .header(tokenUtils.buildAuth(DEFAULT_USERNAME))
                 .contentType(ContentType.JSON)
                 .when()
                 .post("/articles")
@@ -112,7 +113,7 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
             BASE_DATASETS_PATH + "multiple_articles.json"})
     void givenArticlesInDb_whenGetArticles_shouldReturnListOfArticles() {
         String response = given()
-                .header(tokenUtils.buildAuth("user@ukr.net"))
+                .header(tokenUtils.buildAuth(DEFAULT_USERNAME))
                 .when()
                 .get("/articles")
                 .then()
@@ -129,13 +130,14 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
     static class TestResources {
         static final String BASE_RESOURCE_PATH = "rest/";
         static final String BASE_DATASETS_PATH = "datasets/";
+        static final String DEFAULT_USERNAME = "user@ukr.net";
 
         static String buildCreateArticleRqJson() {
             return """
                     {
-                      "title": "Max speed",
-                      "author": "Jorge Orwell",
-                      "content": "It is amazing",
+                      "title": "First title",
+                      "author": "First author",
+                      "content": "first content",
                       "publishDate": "2025-08-09T19:30:00Z"
                     }""";
         }
@@ -144,8 +146,8 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
             return """
                     {
                       "title": "",
-                      "author": "Jorge Orwell",
-                      "content": "It is amazing",
+                      "author": "First author",
+                      "content": "first content",
                       "publishDate": "2025-08-09T19:30:00Z"
                     }""";
         }
