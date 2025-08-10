@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-users
+      author: Vitalii Pavlyk
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: id, value: "111" }
+              - column: { name: email, value: "admin@mail.com" }
+              - column: { name: password, value: "$2a$10$yHLTgow2D1eCMzqpAYIxuui3Byzwv/m79TVR6V.dcg9hEkytnEU4e" }
+              - column: { name: first_name, value: "Vitalii" }
+              - column: { name: last_name, value: "Stepanuk" }
+        - insert:
+            tableName: users_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: 111
+              - column:
+                  name: role_id
+                  value: 1

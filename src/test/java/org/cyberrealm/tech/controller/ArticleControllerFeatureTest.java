@@ -46,7 +46,7 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
     @Test
     @SneakyThrows
     @DataSet(BASE_DATASETS_PATH + "default_user.json")
-    @ExpectedDataSet(BASE_DATASETS_PATH + "article_after_save.json")
+    @ExpectedDataSet(value = BASE_DATASETS_PATH + "article_after_save.json", ignoreCols = "id")
     void givenCreateArticleRequest_whenCreateArticle_shouldCreateArticle() {
         String response = given()
                 .body(buildCreateArticleRqJson())

@@ -12,7 +12,6 @@ import org.cyberrealm.tech.model.Article;
 import org.cyberrealm.tech.repository.ArticleRepository;
 import org.cyberrealm.tech.security.context.UserContext;
 import org.cyberrealm.tech.service.ArticleService;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,14 +31,9 @@ public class ArticleServiceImpl implements ArticleService {
     public ArticleDto save(CreateArticleRequestDto requestDto) {
         Article entity = mapper.toEntity(requestDto, context);
 
-        try {
-            repository.save(entity);
-        } catch (DataIntegrityViolationException e) {
-            throw new DuplicateResourceException(
-                    "Article with title: %s and author: %s already exists."
-                            .formatted(entity.getTitle(), entity.getAuthor())
-            );
-        }
+        validateArticleUniqueness(requestDto.title(), requestDto.author());
+
+        repository.save(entity);
 
         return mapper.toDto(entity);
     }
@@ -56,5 +50,14 @@ public class ArticleServiceImpl implements ArticleService {
         ZonedDateTime sinceDate = ZonedDateTime.now().minusDays(STATS_DAYS);
         Pageable topThree = PageRequest.of(PAGE_NUMBER, PAGE_SIZE);
         return repository.findTopAuthors(sinceDate, topThree);
+    }
+
+    private void validateArticleUniqueness(String title, String author) {
+        if (repository.existsByTitleAndAuthor(title, author)) {
+            throw new DuplicateResourceException(
+                    "Article with title: '%s' and author: '%s' already exists."
+                            .formatted(title, author)
+            );
+        }
     }
 }

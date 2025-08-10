@@ -7,6 +7,7 @@ import org.cyberrealm.tech.model.Article;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     @Query("""
@@ -17,4 +18,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
                 ORDER BY COUNT(a.id) DESC
             """)
     List<AuthorStatsDto> findTopAuthors(ZonedDateTime sinceDate, Pageable pageable);
+
+    @Query("SELECT COUNT(a) > 0 FROM Article a WHERE a.title = :title AND a.author = :author")
+    boolean existsByTitleAndAuthor(@Param("title") String title, @Param("author") String author);
 }
