@@ -117,6 +117,9 @@ GET    /api/stats/top-authors   # Top-3 authors (ADMIN only)
 - API: `http://localhost:8080/api`
 - Swagger UI: `http://localhost:8080/api/swagger-ui`
 
+4. **Created bruno collection in project root folder for test purpose**:
+- Created all possible test endpoints with test data and scripts
+
 ## API Usage 💻
 
 ### 🔐 User Registration

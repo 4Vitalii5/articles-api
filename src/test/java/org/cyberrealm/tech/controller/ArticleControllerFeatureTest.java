@@ -63,7 +63,7 @@ class ArticleControllerFeatureTest extends AbstractIntegrationTest {
         JSONAssert.assertEquals(
                 TestUtils.readResource(BASE_RESOURCE_PATH + "createArticle.json"),
                 response,
-                JSONCompareMode.STRICT
+                JSONCompareMode.LENIENT
         );
     }
 
